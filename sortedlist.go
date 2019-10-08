@@ -126,13 +126,110 @@ func (l *SortedList) Dequeue() *Node{
 	return result
 }
 
-func (l *SortedList) Contain(value Value) bool {
+func (l *SortedList) Contain(score Score,value Value) bool {
+	if l.length == 0 {
+		return false
+	}
+	cur := l.front.next
+	for cur != l.rear {
+		if cur.value == value && cur.score == score{
+			return true
+		}
+		cur = cur.next
+	}
+	return false
+}
+
+func (l *SortedList) ContainValue(value Value) bool {
 	if l.length == 0 {
 		return false
 	}
 	cur := l.front.next
 	for cur != l.rear {
 		if cur.value == value {
+			return true
+		}
+		cur = cur.next
+	}
+	return false
+}
+
+func (l *SortedList) ContainScore(score Score) bool {
+	if l.length == 0 {
+		return false
+	}
+	cur := l.front.next
+	for cur != l.rear {
+		if cur.score == score {
+			return true
+		}
+		cur = cur.next
+	}
+	return false
+}
+
+func (l *SortedList) Remove(score Score,value Value) bool {
+	if l.length == 0 {
+		return false
+	}
+	cur := l.front.next
+	for cur != l.rear {
+		if cur.value == value && cur.score == score{
+			cur.next.prev=cur.prev
+			cur.prev.next=cur.next
+			l.length--
+			if cur.next!=l.rear{
+				if cur.next.value==value&&cur.next.score == score{
+					cur = cur.next
+					continue
+				}
+			}
+			return true
+		}
+		cur = cur.next
+	}
+	return false
+}
+
+func (l *SortedList) RemoveScore(score Score) bool {
+	if l.length == 0 {
+		return false
+	}
+	cur := l.front.next
+	for cur != l.rear {
+		if cur.score == score{
+			cur.next.prev=cur.prev
+			cur.prev.next=cur.next
+			l.length--
+			if cur.next!=l.rear{
+				if cur.next.score == score{
+					cur = cur.next
+					continue
+				}
+			}
+			return true
+		}
+		cur = cur.next
+	}
+	return false
+}
+
+func (l *SortedList) RemoveValue(value Value) bool {
+	if l.length == 0 {
+		return false
+	}
+	cur := l.front.next
+	for cur != l.rear {
+		if cur.value == value{
+			cur.next.prev=cur.prev
+			cur.prev.next=cur.next
+			l.length--
+			if cur.next!=l.rear{
+				if cur.next.value==value {
+					cur = cur.next
+					continue
+				}
+			}
 			return true
 		}
 		cur = cur.next

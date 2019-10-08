@@ -25,38 +25,57 @@ func main()  {
 	}
 	s:=sortedlist.NewSortedList(less)
 	s.Insert(1,1)
+	s.Insert(1,1)
 	s.Insert(3,3)
-	s.Insert(5,5)
+	s.Insert(3,3)
 	s.Insert(2,2)
+	s.Insert(2,2)
+	s.Insert(5,5)
 	s.Insert(4,4)
+
 	printList(s)
-	for	s.Length()>0{
-		fmt.Printf("Dequeue %d\n",s.Dequeue().Value())
-	}
+	fmt.Printf("Contain\t\t\t3\t%t\n",s.Contain(3,3))
+	fmt.Printf("ContainScore\t3\t%t\n",s.ContainScore(3))
+	fmt.Printf("ContainValue\t3\t%t\n",s.ContainValue(3))
+	fmt.Printf("Remove\t\t\t3\t%t\n",s.Remove(3,3))
+	fmt.Printf("RemoveScore\t\t2\t%t\n",s.RemoveScore(2))
+	fmt.Printf("RemoveValue\t\t1\t%t\n",s.RemoveValue(1))
+	fmt.Printf("Dequeue\t\t\t%d\n",s.Dequeue().Value())
 	printList(s)
 }
-
 func printList(s *sortedlist.SortedList){
+	fmt.Println("===========Traverse===========")
 	cur:=s.Front()
 	for cur!=nil&&cur!=s.Tail(){
-		fmt.Printf("Traverse %d\n",cur.Value())
+		fmt.Printf("Traverse\t\t%d\n",cur.Value())
 		cur=cur.Next()
 	}
+	fmt.Println("=============End==============")
 }
 ```
 
 ### Output
 ```
-Traverse 5
-Traverse 4
-Traverse 3
-Traverse 2
-Traverse 1
-Dequeue 5
-Dequeue 4
-Dequeue 3
-Dequeue 2
-Dequeue 1
+===========Traverse===========
+Traverse		5
+Traverse		4
+Traverse		3
+Traverse		3
+Traverse		2
+Traverse		2
+Traverse		1
+Traverse		1
+=============End==============
+Contain			3	true
+ContainScore	3	true
+ContainValue	3	true
+Remove			3	true
+RemoveScore		2	true
+RemoveValue		1	true
+Dequeue			5
+===========Traverse===========
+Traverse		4
+=============End==============
 ```
 
 ### Licence
