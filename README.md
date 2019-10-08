@@ -31,6 +31,8 @@ func main()  {
 	s.Insert(2,2)
 	s.Insert(2,2)
 	s.Insert(5,5)
+	s.Insert(5,5)
+	s.Insert(6,6)
 	s.Insert(4,4)
 	printList(s)
 	fmt.Printf("Contain\t\t\t3\t%t\n",s.Contain(3,3))
@@ -56,6 +58,8 @@ func printList(s *sortedlist.SortedList){
 ### Output
 ```
 ===========Traverse===========
+Traverse		6
+Traverse		5
 Traverse		5
 Traverse		4
 Traverse		3
@@ -71,8 +75,10 @@ ContainValue	3	true
 Remove			3	true
 RemoveScore		2	true
 RemoveValue		1	true
-Dequeue			5
+Dequeue			6
 ===========Traverse===========
+Traverse		5
+Traverse		5
 Traverse		4
 =============End==============
 ```
