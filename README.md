@@ -1,3 +1,19 @@
+# sortedlist
+A sortedlist library written in Golang .
+
+## Get started
+
+### Install
+```
+go get hslam.com/mgit/Mort/sortedlist
+```
+### Import
+```
+import "hslam.com/mgit/Mort/sortedlist"
+```
+### Usage
+#### Example
+```
 package main
 import (
 	"hslam.com/mgit/Mort/sortedlist"
@@ -27,3 +43,27 @@ func printList(s *sortedlist.SortedList){
 		cur=cur.Next()
 	}
 }
+```
+
+### Output
+```
+Traverse 5
+Traverse 4
+Traverse 3
+Traverse 2
+Traverse 1
+Dequeue 5
+Dequeue 4
+Dequeue 3
+Dequeue 2
+Dequeue 1
+```
+
+### Licence
+This package is licenced under a MIT licence (Copyright (c) 2019 Mort Huang)
+
+
+### Authors
+sortedlist was written by Mort Huang.
+
+
