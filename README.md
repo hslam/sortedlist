@@ -32,7 +32,6 @@ func main()  {
 	s.Insert(2,2)
 	s.Insert(5,5)
 	s.Insert(4,4)
-
 	printList(s)
 	fmt.Printf("Contain\t\t\t3\t%t\n",s.Contain(3,3))
 	fmt.Printf("ContainScore\t3\t%t\n",s.ContainScore(3))
