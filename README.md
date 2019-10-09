@@ -20,29 +20,26 @@ import (
 	"fmt"
 )
 func main()  {
-	less:= func(i sortedlist.Score,j sortedlist.Score)bool{
-		if i.(int)<j.(int){return true} else {return false}
-	}
-	s:=sortedlist.New(less)
+	s:=sortedlist.New(sortedlist.LessInt)
 	fmt.Printf("ASC\t\t\t%t\n",s.ASC())
 	fmt.Printf("DESC\t\t%t\n",s.DESC())
-	s.Insert(10,1)
-	s.Insert(15,1)
-	s.Insert(30,3)
-	s.Insert(35,3)
-	s.Insert(20,2)
-	s.Insert(25,2)
-	s.Insert(50,5)
-	s.Insert(60,6)
-	s.Insert(40,4)
-	s.Insert(45,4)
+	s.Insert(1,1)
+	s.Insert(1,1)
+	s.Insert(3,3)
+	s.Insert(3,3)
+	s.Insert(2,2)
+	s.Insert(2,2)
+	s.Insert(5,5)
+	s.Insert(6,6)
+	s.Insert(4,4)
+	s.Insert(4,4)
 	printList(s)
-	fmt.Printf("Contain\tScore:20 Value:2\t%t\n",s.Contain(20,2))
-	fmt.Printf("Remove\tScore:20 Value:2\t%t\n",s.Remove(20,2))
-	fmt.Printf("ContainScore\tScore:30\t%t\n",s.ContainScore(30))
-	fmt.Printf("RemoveScore\t\tScore:30\t%t\n",s.RemoveScore(30))
-	fmt.Printf("ContainValue\tValue:4\t\t%t\n",s.ContainValue(4))
-	fmt.Printf("RemoveValue\t\tValue:4\t\t%t\n",s.RemoveValue(4))
+	fmt.Printf("Contain\tScore:2 Value:2\t%t\n",s.Contain(2,2))
+	fmt.Printf("Remove\tScore:2 Value:2\t%t\n",s.Remove(2,2))
+	fmt.Printf("ContainScore\tScore:3\t%t\n",s.ContainScore(3))
+	fmt.Printf("RemoveScore\t\tScore:3\t%t\n",s.RemoveScore(3))
+	fmt.Printf("ContainValue\tValue:4\t%t\n",s.ContainValue(4))
+	fmt.Printf("RemoveValue\t\tValue:4\t%t\n",s.RemoveValue(4))
 	printList(s)
 	top:=s.Top()
 	fmt.Printf("Top\t\t\tScore:%d\tValue:%d\n",top.Score(),top.Value())
@@ -66,38 +63,34 @@ func printList(s *sortedlist.SortedList){
 ASC			true
 DESC		false
 ===========Traverse===========
-Traverse	Score:10	Value:1
-Traverse	Score:15	Value:1
-Traverse	Score:20	Value:2
-Traverse	Score:25	Value:2
-Traverse	Score:30	Value:3
-Traverse	Score:35	Value:3
-Traverse	Score:40	Value:4
-Traverse	Score:45	Value:4
-Traverse	Score:50	Value:5
-Traverse	Score:60	Value:6
+Traverse	Score:1	Value:1
+Traverse	Score:1	Value:1
+Traverse	Score:2	Value:2
+Traverse	Score:2	Value:2
+Traverse	Score:3	Value:3
+Traverse	Score:3	Value:3
+Traverse	Score:4	Value:4
+Traverse	Score:4	Value:4
+Traverse	Score:5	Value:5
+Traverse	Score:6	Value:6
 =============End==============
-Contain	Score:20 Value:2	true
-Remove	Score:20 Value:2	true
-ContainScore	Score:30	true
-RemoveScore		Score:30	true
-ContainValue	Value:4		true
-RemoveValue		Value:4		true
+Contain	Score:2 Value:2	true
+Remove	Score:2 Value:2	true
+ContainScore	Score:3	true
+RemoveScore		Score:3	true
+ContainValue	Value:4	true
+RemoveValue		Value:4	true
 ===========Traverse===========
-Traverse	Score:10	Value:1
-Traverse	Score:15	Value:1
-Traverse	Score:25	Value:2
-Traverse	Score:35	Value:3
-Traverse	Score:50	Value:5
-Traverse	Score:60	Value:6
+Traverse	Score:1	Value:1
+Traverse	Score:1	Value:1
+Traverse	Score:5	Value:5
+Traverse	Score:6	Value:6
 =============End==============
-Top			Score:10	Value:1
-Bottom		Score:60	Value:6
+Top			Score:1	Value:1
+Bottom		Score:6	Value:6
 ===========Traverse===========
-Traverse	Score:15	Value:1
-Traverse	Score:25	Value:2
-Traverse	Score:35	Value:3
-Traverse	Score:50	Value:5
+Traverse	Score:1	Value:1
+Traverse	Score:5	Value:5
 =============End==============
 ```
 
