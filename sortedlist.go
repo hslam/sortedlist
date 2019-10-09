@@ -32,12 +32,13 @@ func (n *Node) Next() *Node {
 }
 
 type SortedList struct {
+	asc 		bool
 	less		Less
 	front		*Node
 	rear		*Node
 	length		int
 }
-func NewSortedList(less Less) (*SortedList) {
+func NewSortedList(less Less,asc bool) (*SortedList) {
 	front := &Node{
 		value:	nil,
 		prev: 	nil,
@@ -49,6 +50,7 @@ func NewSortedList(less Less) (*SortedList) {
 	front.next = rear
 	rear.prev=front
 	return &SortedList{
+		asc:		asc,
 		less:		less,
 		front:		front,
 		rear:		rear,
@@ -58,33 +60,35 @@ func NewSortedList(less Less) (*SortedList) {
 func (l *SortedList) Length() int {
 	return l.length
 }
-
+//read front data node
 func (l *SortedList) Front() *Node {
 	if l.length == 0 {
 		return nil
 	}
 	return l.front.next
 }
-
+//read head node(nil)
 func (l *SortedList) Head() *Node {
 	if l.length == 0 {
 		return nil
 	}
 	return l.front
 }
-
+//read rear data node
 func (l *SortedList) Rear() *Node {
 	if l.length == 0 {
 		return nil
 	}
 	return l.rear.prev
 }
+//read tail node(nil)
 func (l *SortedList) Tail() *Node {
 	if l.length == 0 {
 		return nil
 	}
 	return l.rear
 }
+//Insert
 func (l *SortedList) Insert(score Score,value Value) bool {
 	if value == nil {
 		return false
@@ -102,8 +106,17 @@ func (l *SortedList) Insert(score Score,value Value) bool {
 		return true
 	}
 	cur := l.front.next
-	for l.less(score,cur.score)&& cur != l.rear {
-		cur = cur.next
+	if l.asc{
+		for l.less(cur.score,score){
+			cur = cur.next
+			if cur == l.rear{
+				break
+			}
+		}
+	}else {
+		for l.less(score,cur.score)&& cur != l.rear {
+			cur = cur.next
+		}
 	}
 	prev:=cur.prev
 	node.next=cur
@@ -113,19 +126,33 @@ func (l *SortedList) Insert(score Score,value Value) bool {
 	l.length++
 	return true
 }
-
-func (l *SortedList) Dequeue() *Node{
+//read and remove
+func (l *SortedList) Top() *Node{
 	if l.length == 0 {
 		return nil
 	}
 	result := l.front.next
 	l.front.next = result.next
+	result.next.prev=l.front
 	result.next = nil
 	result.prev = nil
 	l.length--
 	return result
 }
-
+//read and remove
+func (l *SortedList) Bottom() *Node{
+	if l.length == 0 {
+		return nil
+	}
+	result := l.rear.prev
+	l.rear.prev = result.prev
+	result.prev.next=l.rear
+	result.next = nil
+	result.prev = nil
+	l.length--
+	return result
+}
+//read
 func (l *SortedList) Contain(score Score,value Value) bool {
 	if l.length == 0 {
 		return false
@@ -139,7 +166,7 @@ func (l *SortedList) Contain(score Score,value Value) bool {
 	}
 	return false
 }
-
+//read
 func (l *SortedList) ContainValue(value Value) bool {
 	if l.length == 0 {
 		return false
@@ -153,7 +180,7 @@ func (l *SortedList) ContainValue(value Value) bool {
 	}
 	return false
 }
-
+//read
 func (l *SortedList) ContainScore(score Score) bool {
 	if l.length == 0 {
 		return false
@@ -167,7 +194,7 @@ func (l *SortedList) ContainScore(score Score) bool {
 	}
 	return false
 }
-
+//remove
 func (l *SortedList) Remove(score Score,value Value) bool {
 	if l.length == 0 {
 		return false
@@ -190,7 +217,7 @@ func (l *SortedList) Remove(score Score,value Value) bool {
 	}
 	return false
 }
-
+//remove
 func (l *SortedList) RemoveScore(score Score) bool {
 	if l.length == 0 {
 		return false
@@ -213,7 +240,7 @@ func (l *SortedList) RemoveScore(score Score) bool {
 	}
 	return false
 }
-
+//remove
 func (l *SortedList) RemoveValue(value Value) bool {
 	if l.length == 0 {
 		return false
