@@ -38,7 +38,16 @@ type SortedList struct {
 	rear		*Node
 	length		int
 }
-func NewSortedList(less Less,asc bool) (*SortedList) {
+func New(less Less) (*SortedList) {
+	return newSortedList(less,true)
+}
+func NewASC(less Less) (*SortedList) {
+	return newSortedList(less,true)
+}
+func NewDESC(less Less) (*SortedList) {
+	return newSortedList(less,false)
+}
+func newSortedList(less Less,asc bool) (*SortedList) {
 	front := &Node{
 		value:	nil,
 		prev: 	nil,
@@ -56,7 +65,12 @@ func NewSortedList(less Less,asc bool) (*SortedList) {
 		rear:		rear,
 	}
 }
-
+func (l *SortedList) ASC() bool {
+	return l.asc
+}
+func (l *SortedList) DESC() bool {
+	return !l.asc
+}
 func (l *SortedList) Length() int {
 	return l.length
 }

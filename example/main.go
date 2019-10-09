@@ -7,7 +7,9 @@ func main()  {
 	less:= func(i sortedlist.Score,j sortedlist.Score)bool{
 		if i.(int)<j.(int){return true} else {return false}
 	}
-	s:=sortedlist.NewSortedList(less,true)
+	s:=sortedlist.New(less)
+	fmt.Printf("ASC\t\t\t%t\n",s.ASC())
+	fmt.Printf("DESC\t\t%t\n",s.DESC())
 	s.Insert(10,1)
 	s.Insert(15,1)
 	s.Insert(30,3)
