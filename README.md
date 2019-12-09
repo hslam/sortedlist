@@ -5,18 +5,18 @@ A sortedlist library written in Golang .
 
 ### Install
 ```
-go get hslam.com/git/x/sortedlist
+go get github.com/hslam/sortedlist
 ```
 ### Import
 ```
-import "hslam.com/git/x/sortedlist"
+import "github.com/hslam/sortedlist"
 ```
 ### Usage
 #### Example
 ```
 package main
 import (
-	"hslam.com/git/x/sortedlist"
+	"github.com/hslam/sortedlist"
 	"fmt"
 )
 func main()  {

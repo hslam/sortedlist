@@ -1,6 +1,6 @@
 package main
 import (
-	"hslam.com/git/x/sortedlist"
+	"github.com/hslam/sortedlist"
 	"fmt"
 )
 func main()  {
