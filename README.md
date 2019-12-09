@@ -95,10 +95,10 @@ Traverse	Score:5	Value:5
 ```
 
 ### Licence
-This package is licenced under a MIT licence (Copyright (c) 2019 Mort Huang)
+This package is licenced under a MIT licence (Copyright (c) 2019 Meng Huang)
 
 
 ### Authors
-sortedlist was written by Mort Huang.
+sortedlist was written by Meng Huang.
 
 
