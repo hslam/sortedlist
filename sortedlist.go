@@ -142,24 +142,24 @@ func (l *SortedList) Insert(score interface{}, value interface{}) bool {
 		l.length = 1
 		return true
 	}
-	cur := l.head.next
+	cur := l.rear.prev
 	if l.ascend {
+		for l.less(score, cur.score) && cur != l.head {
+			cur = cur.prev
+		}
+	} else {
 		for l.less(cur.score, score) {
-			cur = cur.next
-			if cur == l.rear {
+			cur = cur.prev
+			if cur == l.head {
 				break
 			}
 		}
-	} else {
-		for l.less(score, cur.score) && cur != l.rear {
-			cur = cur.next
-		}
 	}
-	prev := cur.prev
-	node.next = cur
-	node.prev = prev
-	prev.next = node
-	cur.prev = node
+	next := cur.next
+	node.next = next
+	node.prev = cur
+	next.prev = node
+	cur.next = node
 	l.length++
 	return true
 }
