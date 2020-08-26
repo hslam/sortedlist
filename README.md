@@ -24,24 +24,25 @@ import (
 func main() {
 	s := sortedlist.New(sortedlist.LessInt)
 	fmt.Printf("ASC\t\t%t\n", s.Ascend())
+
 	s.Insert(1, 1)
-	s.Insert(1, 1)
+	s.Insert(3, 2)
 	s.Insert(3, 3)
-	s.Insert(3, 3)
-	s.Insert(2, 2)
-	s.Insert(2, 2)
-	s.Insert(5, 5)
-	s.Insert(6, 6)
-	s.Insert(4, 4)
-	s.Insert(4, 4)
+	s.Insert(5, 4)
+	s.Insert(6, 4)
+	s.Insert(2, 5)
+	s.Insert(2, 6)
+	s.Insert(4, 7)
 	printList(s)
-	fmt.Printf("Contain\t\tScore:2 Value:2\t%t\n", s.Contain(2, 2))
-	fmt.Printf("Remove\t\tScore:2 Value:2\t%t\n", s.Remove(2, 2))
+
+	fmt.Printf("Contain\t\tScore:2 Value:5\t%t\n", s.Contain(2, 5))
+	fmt.Printf("Remove\t\tScore:2 Value:5\t%t\n", s.Remove(2, 5))
 	fmt.Printf("ContainScore\tScore:3\t%t\n", s.ContainScore(3))
 	fmt.Printf("RemoveScore\tScore:3\t%t\n", s.RemoveScore(3))
 	fmt.Printf("ContainValue\tValue:4\t%t\n", s.ContainValue(4))
 	fmt.Printf("RemoveValue\tValue:4\t%t\n", s.RemoveValue(4))
 	printList(s)
+
 	top := s.Top()
 	fmt.Printf("Top\t\tScore:%d\tValue:%d\n", top.Score(), top.Value())
 	bottom := s.Bottom()
@@ -66,19 +67,17 @@ ASC		true
 
 ===========Traverse===========
 Traverse	Score:1	Value:1
-Traverse	Score:1	Value:1
-Traverse	Score:2	Value:2
-Traverse	Score:2	Value:2
+Traverse	Score:2	Value:5
+Traverse	Score:2	Value:6
+Traverse	Score:3	Value:2
 Traverse	Score:3	Value:3
-Traverse	Score:3	Value:3
-Traverse	Score:4	Value:4
-Traverse	Score:4	Value:4
-Traverse	Score:5	Value:5
-Traverse	Score:6	Value:6
+Traverse	Score:4	Value:7
+Traverse	Score:5	Value:4
+Traverse	Score:6	Value:4
 =============End==============
 
-Contain		Score:2 Value:2	true
-Remove		Score:2 Value:2	true
+Contain		Score:2 Value:5	true
+Remove		Score:2 Value:5	true
 ContainScore	Score:3	true
 RemoveScore	Score:3	true
 ContainValue	Value:4	true
@@ -86,17 +85,15 @@ RemoveValue	Value:4	true
 
 ===========Traverse===========
 Traverse	Score:1	Value:1
-Traverse	Score:1	Value:1
-Traverse	Score:5	Value:5
-Traverse	Score:6	Value:6
+Traverse	Score:2	Value:6
+Traverse	Score:4	Value:7
 =============End==============
 
 Top		Score:1	Value:1
-Bottom		Score:6	Value:6
+Bottom		Score:4	Value:7
 
 ===========Traverse===========
-Traverse	Score:1	Value:1
-Traverse	Score:5	Value:5
+Traverse	Score:2	Value:6
 =============End==============
 ```
 
