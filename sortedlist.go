@@ -78,18 +78,18 @@ type SortedList struct {
 }
 
 func New(less Less) *SortedList {
-	return newSortedList(less, true)
+	return NewSortedList(less, true)
 }
 
 func NewASC(less Less) *SortedList {
-	return newSortedList(less, true)
+	return NewSortedList(less, true)
 }
 
 func NewDESC(less Less) *SortedList {
-	return newSortedList(less, false)
+	return NewSortedList(less, false)
 }
 
-func newSortedList(less Less, ascend bool) *SortedList {
+func NewSortedList(less Less, ascend bool) *SortedList {
 	head := &Node{
 		value: nil,
 		prev:  nil,
