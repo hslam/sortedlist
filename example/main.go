@@ -7,7 +7,7 @@ import (
 
 func main() {
 	s := sortedlist.New(sortedlist.LessInt)
-	fmt.Printf("ASC\t\t\t%t\n", s.Ascend())
+	fmt.Printf("ASC\t\t%t\n", s.Ascend())
 	s.Insert(1, 1)
 	s.Insert(1, 1)
 	s.Insert(3, 3)

@@ -23,7 +23,7 @@ import (
 
 func main() {
 	s := sortedlist.New(sortedlist.LessInt)
-	fmt.Printf("ASC\t\t\t%t\n", s.Ascend())
+	fmt.Printf("ASC\t\t%t\n", s.Ascend())
 	s.Insert(1, 1)
 	s.Insert(1, 1)
 	s.Insert(3, 3)
@@ -62,7 +62,7 @@ func printList(s *sortedlist.SortedList) {
 
 ### Output
 ```
-ASC			true
+ASC		true
 
 ===========Traverse===========
 Traverse	Score:1	Value:1
