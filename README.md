@@ -35,15 +35,15 @@ func main() {
 	s.Insert(4, 4)
 	s.Insert(4, 4)
 	printList(s)
-	fmt.Printf("Contain\tScore:2 Value:2\t%t\n", s.Contain(2, 2))
-	fmt.Printf("Remove\tScore:2 Value:2\t%t\n", s.Remove(2, 2))
+	fmt.Printf("Contain\t\tScore:2 Value:2\t%t\n", s.Contain(2, 2))
+	fmt.Printf("Remove\t\tScore:2 Value:2\t%t\n", s.Remove(2, 2))
 	fmt.Printf("ContainScore\tScore:3\t%t\n", s.ContainScore(3))
-	fmt.Printf("RemoveScore\t\tScore:3\t%t\n", s.RemoveScore(3))
+	fmt.Printf("RemoveScore\tScore:3\t%t\n", s.RemoveScore(3))
 	fmt.Printf("ContainValue\tValue:4\t%t\n", s.ContainValue(4))
-	fmt.Printf("RemoveValue\t\tValue:4\t%t\n", s.RemoveValue(4))
+	fmt.Printf("RemoveValue\tValue:4\t%t\n", s.RemoveValue(4))
 	printList(s)
 	top := s.Top()
-	fmt.Printf("Top\t\t\tScore:%d\tValue:%d\n", top.Score(), top.Value())
+	fmt.Printf("Top\t\tScore:%d\tValue:%d\n", top.Score(), top.Value())
 	bottom := s.Bottom()
 	fmt.Printf("Bottom\t\tScore:%d\tValue:%d\n", bottom.Score(), bottom.Value())
 	printList(s)
@@ -52,7 +52,7 @@ func main() {
 func printList(s *sortedlist.SortedList) {
 	fmt.Println("\n===========Traverse===========")
 	cur := s.Front()
-	for cur != nil && cur != s.Tail() {
+	for cur != nil && cur != s.Rear() {
 		fmt.Printf("Traverse\tScore:%d\tValue:%d\n", cur.Score(), cur.Value())
 		cur = cur.Next()
 	}
@@ -77,12 +77,12 @@ Traverse	Score:5	Value:5
 Traverse	Score:6	Value:6
 =============End==============
 
-Contain	Score:2 Value:2	true
-Remove	Score:2 Value:2	true
+Contain		Score:2 Value:2	true
+Remove		Score:2 Value:2	true
 ContainScore	Score:3	true
-RemoveScore		Score:3	true
+RemoveScore	Score:3	true
 ContainValue	Value:4	true
-RemoveValue		Value:4	true
+RemoveValue	Value:4	true
 
 ===========Traverse===========
 Traverse	Score:1	Value:1
@@ -91,7 +91,7 @@ Traverse	Score:5	Value:5
 Traverse	Score:6	Value:6
 =============End==============
 
-Top			Score:1	Value:1
+Top		Score:1	Value:1
 Bottom		Score:6	Value:6
 
 ===========Traverse===========
