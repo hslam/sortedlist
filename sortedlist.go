@@ -4,13 +4,9 @@
 // Package sortedlist implements sorted list.
 package sortedlist
 
-type Less func(i Score, j Score) bool
+type Less func(i interface{}, j interface{}) bool
 
-type Score interface{}
-
-type Value interface{}
-
-var LessInt = func(i Score, j Score) bool {
+var LessInt = func(i interface{}, j interface{}) bool {
 	if i.(int) < j.(int) {
 		return true
 	} else {
@@ -18,7 +14,7 @@ var LessInt = func(i Score, j Score) bool {
 	}
 }
 
-var LessInt64 = func(i Score, j Score) bool {
+var LessInt64 = func(i interface{}, j interface{}) bool {
 	if i.(int64) < j.(int64) {
 		return true
 	} else {
@@ -26,7 +22,7 @@ var LessInt64 = func(i Score, j Score) bool {
 	}
 }
 
-var LessUint64 = func(i Score, j Score) bool {
+var LessUint64 = func(i interface{}, j interface{}) bool {
 	if i.(uint64) < j.(uint64) {
 		return true
 	} else {
@@ -34,7 +30,7 @@ var LessUint64 = func(i Score, j Score) bool {
 	}
 }
 
-var LessString = func(i Score, j Score) bool {
+var LessString = func(i interface{}, j interface{}) bool {
 	if i.(string) < j.(string) {
 		return true
 	} else {
@@ -43,21 +39,21 @@ var LessString = func(i Score, j Score) bool {
 }
 
 type Node struct {
-	score Score
-	value Value
+	score interface{}
+	value interface{}
 	prev  *Node
 	next  *Node
 }
 
-func (n *Node) Score() Score {
+func (n *Node) Score() interface{} {
 	return n.score
 }
 
-func (n *Node) Value() Value {
+func (n *Node) Value() interface{} {
 	return n.value
 }
 
-func (n *Node) Set(value Value) {
+func (n *Node) Set(value interface{}) {
 	n.value = value
 }
 
@@ -130,7 +126,7 @@ func (l *SortedList) Rear() *Node {
 	return l.rear
 }
 
-func (l *SortedList) Insert(score Score, value Value) bool {
+func (l *SortedList) Insert(score interface{}, value interface{}) bool {
 	if value == nil {
 		return false
 	}
@@ -194,7 +190,7 @@ func (l *SortedList) Bottom() *Node {
 	return result
 }
 
-func (l *SortedList) Contain(score Score, value Value) bool {
+func (l *SortedList) Contain(score interface{}, value interface{}) bool {
 	if l.length == 0 {
 		return false
 	}
@@ -208,7 +204,7 @@ func (l *SortedList) Contain(score Score, value Value) bool {
 	return false
 }
 
-func (l *SortedList) ContainValue(value Value) bool {
+func (l *SortedList) ContainValue(value interface{}) bool {
 	if l.length == 0 {
 		return false
 	}
@@ -222,7 +218,7 @@ func (l *SortedList) ContainValue(value Value) bool {
 	return false
 }
 
-func (l *SortedList) ContainScore(score Score) bool {
+func (l *SortedList) ContainScore(score interface{}) bool {
 	if l.length == 0 {
 		return false
 	}
@@ -236,7 +232,7 @@ func (l *SortedList) ContainScore(score Score) bool {
 	return false
 }
 
-func (l *SortedList) Remove(score Score, value Value) bool {
+func (l *SortedList) Remove(score interface{}, value interface{}) bool {
 	if l.length == 0 {
 		return false
 	}
@@ -259,7 +255,7 @@ func (l *SortedList) Remove(score Score, value Value) bool {
 	return false
 }
 
-func (l *SortedList) RemoveScore(score Score) bool {
+func (l *SortedList) RemoveScore(score interface{}) bool {
 	if l.length == 0 {
 		return false
 	}
@@ -282,7 +278,7 @@ func (l *SortedList) RemoveScore(score Score) bool {
 	return false
 }
 
-func (l *SortedList) RemoveValue(value Value) bool {
+func (l *SortedList) RemoveValue(value interface{}) bool {
 	if l.length == 0 {
 		return false
 	}
