@@ -13,7 +13,7 @@ import "github.com/hslam/sortedlist"
 ```
 ### Usage
 #### Example
-```
+```go
 package main
 
 import (
@@ -101,7 +101,7 @@ Traverse	Score:2	Value:6
 This package is licensed under a MIT license (Copyright (c) 2019 Meng Huang)
 
 
-### Authors
+### Author
 sortedlist was written by Meng Huang.
 
 
