@@ -1,4 +1,10 @@
 # sortedlist
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/hslam/sortedlist)](https://pkg.go.dev/github.com/hslam/sortedlist)
+[![Build Status](https://github.com/hslam/sortedlist/workflows/build/badge.svg)](https://github.com/hslam/sortedlist/actions)
+[![codecov](https://codecov.io/gh/hslam/sortedlist/branch/master/graph/badge.svg)](https://codecov.io/gh/hslam/sortedlist)
+[![Go Report Card](https://goreportcard.com/badge/github.com/hslam/sortedlist)](https://goreportcard.com/report/github.com/hslam/sortedlist)
+[![LICENSE](https://img.shields.io/github/license/hslam/sortedlist.svg?style=flat-square)](https://github.com/hslam/sortedlist/blob/master/LICENSE)
+
 Package sortedlist implements a sorted list.
 
 ## Get started
