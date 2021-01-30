@@ -1,5 +1,5 @@
 # sortedlist
-Package sortedlist implements sorted list.
+Package sortedlist implements a sorted list.
 
 ## Get started
 

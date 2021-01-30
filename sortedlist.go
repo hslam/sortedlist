@@ -1,43 +1,45 @@
 // Copyright (c) 2019 Meng Huang (mhboy@outlook.com)
 // This package is licensed under a MIT license that can be found in the LICENSE file.
 
-// Package sortedlist implements sorted list.
+// Package sortedlist implements a sorted list.
 package sortedlist
 
+// Less represents a less function.
 type Less func(i interface{}, j interface{}) bool
 
+// LessInt implements the Less function for int.
 var LessInt = func(i interface{}, j interface{}) bool {
 	if i.(int) < j.(int) {
 		return true
-	} else {
-		return false
 	}
+	return false
 }
 
+// LessInt64 implements the Less function for int64.
 var LessInt64 = func(i interface{}, j interface{}) bool {
 	if i.(int64) < j.(int64) {
 		return true
-	} else {
-		return false
 	}
+	return false
 }
 
+// LessUint64 implements the Less function for uint64.
 var LessUint64 = func(i interface{}, j interface{}) bool {
 	if i.(uint64) < j.(uint64) {
 		return true
-	} else {
-		return false
 	}
+	return false
 }
 
+// LessString implements the Less function for string.
 var LessString = func(i interface{}, j interface{}) bool {
 	if i.(string) < j.(string) {
 		return true
-	} else {
-		return false
 	}
+	return false
 }
 
+// Node represents a node.
 type Node struct {
 	score interface{}
 	value interface{}
@@ -45,26 +47,32 @@ type Node struct {
 	next  *Node
 }
 
+// Score returns the node score.
 func (n *Node) Score() interface{} {
 	return n.score
 }
 
+// Value returns the node value.
 func (n *Node) Value() interface{} {
 	return n.value
 }
 
+// Set sets the node value.
 func (n *Node) Set(value interface{}) {
 	n.value = value
 }
 
+// Prev returns the prev node.
 func (n *Node) Prev() *Node {
 	return n.prev
 }
 
+// Next returns the next node.
 func (n *Node) Next() *Node {
 	return n.next
 }
 
+// SortedList represents a sorted list.
 type SortedList struct {
 	ascend bool
 	less   Less
@@ -73,18 +81,22 @@ type SortedList struct {
 	length int
 }
 
+// New returns a new ascend sorted list with the given Less function.
 func New(less Less) *SortedList {
 	return NewSortedList(less, true)
 }
 
+// NewASC returns a new ascend sorted list with the given Less function.
 func NewASC(less Less) *SortedList {
 	return NewSortedList(less, true)
 }
 
+// NewDESC returns a new descend sorted list with the given Less function.
 func NewDESC(less Less) *SortedList {
 	return NewSortedList(less, false)
 }
 
+// NewSortedList returns a new sorted list.
 func NewSortedList(less Less, ascend bool) *SortedList {
 	head := &Node{
 		value: nil,
@@ -104,14 +116,17 @@ func NewSortedList(less Less, ascend bool) *SortedList {
 	}
 }
 
+// Ascend returns ascend.
 func (l *SortedList) Ascend() bool {
 	return l.ascend
 }
 
+// Length returns length of the sorted list.
 func (l *SortedList) Length() int {
 	return l.length
 }
 
+// Front returns the front node.
 func (l *SortedList) Front() *Node {
 	if l.length == 0 {
 		return nil
@@ -119,6 +134,7 @@ func (l *SortedList) Front() *Node {
 	return l.head.next
 }
 
+// Rear returns the rear node.
 func (l *SortedList) Rear() *Node {
 	if l.length == 0 {
 		return nil
@@ -126,6 +142,7 @@ func (l *SortedList) Rear() *Node {
 	return l.rear
 }
 
+// Insert inserts a value with a score.
 func (l *SortedList) Insert(score interface{}, value interface{}) bool {
 	if value == nil {
 		return false
@@ -167,6 +184,7 @@ func (l *SortedList) Insert(score interface{}, value interface{}) bool {
 	return true
 }
 
+// Top returns the top node of the sorted list.
 func (l *SortedList) Top() *Node {
 	if l.length == 0 {
 		return nil
@@ -180,6 +198,7 @@ func (l *SortedList) Top() *Node {
 	return result
 }
 
+// Bottom returns the bottom node of the sorted list.
 func (l *SortedList) Bottom() *Node {
 	if l.length == 0 {
 		return nil
@@ -193,6 +212,7 @@ func (l *SortedList) Bottom() *Node {
 	return result
 }
 
+// Contain return whether the sorted list contains the score value.
 func (l *SortedList) Contain(score interface{}, value interface{}) bool {
 	if l.length == 0 {
 		return false
@@ -207,6 +227,7 @@ func (l *SortedList) Contain(score interface{}, value interface{}) bool {
 	return false
 }
 
+// ContainValue return whether the sorted list contains the value.
 func (l *SortedList) ContainValue(value interface{}) bool {
 	if l.length == 0 {
 		return false
@@ -221,6 +242,7 @@ func (l *SortedList) ContainValue(value interface{}) bool {
 	return false
 }
 
+// ContainScore return whether the sorted list contains the score.
 func (l *SortedList) ContainScore(score interface{}) bool {
 	if l.length == 0 {
 		return false
@@ -235,6 +257,7 @@ func (l *SortedList) ContainScore(score interface{}) bool {
 	return false
 }
 
+// Remove removes the value with the score.
 func (l *SortedList) Remove(score interface{}, value interface{}) bool {
 	if l.length == 0 {
 		return false
@@ -258,6 +281,7 @@ func (l *SortedList) Remove(score interface{}, value interface{}) bool {
 	return false
 }
 
+// RemoveScore removes the score.
 func (l *SortedList) RemoveScore(score interface{}) bool {
 	if l.length == 0 {
 		return false
@@ -281,6 +305,7 @@ func (l *SortedList) RemoveScore(score interface{}) bool {
 	return false
 }
 
+// RemoveValue removes the value.
 func (l *SortedList) RemoveValue(value interface{}) bool {
 	if l.length == 0 {
 		return false
